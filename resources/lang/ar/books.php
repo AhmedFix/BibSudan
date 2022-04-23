@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'books' => 'الكتب',
+    'book' => 'كتاب',
+    'title' => 'العنوان',
+    'description' => 'الوصف',
+    'vote' => 'التقيم',
+    'vote_count' => 'عدد التقيمات',
+    'release_date' => 'تاريخ الاصدار',
+    'type'=> 'النوع',
+    'poster' => 'الغلاف',
+    'novels' => 'روايات',
+    'stories' => 'قصص',
+    'by' => 'بواسطة',
+    'language' => 'اللغة',
+    'books_chart' => 'مخطط الكتب',
+    'total_books' => 'مجموع الكتب',
+    'top' => 'الرايج',
+    'popular' => 'الكتب الأشهر',
+    'favourite_by' => 'تفضيل بواسطة',
+    'all_categories' => 'كل التصنيفات',
+    'categories' => 'التصنيفات',
+    'all_authors' => 'كل المؤلفين',
+    'authors' => 'المؤلفين',
+];

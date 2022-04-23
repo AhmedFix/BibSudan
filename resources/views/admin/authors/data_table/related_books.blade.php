@@ -1,0 +1,1 @@
+<a href="{{ route('admin.books.index', ['author_id' => $id]) }}" class="btn btn-primary btn-sm">@lang('authors.related_books')</a>
