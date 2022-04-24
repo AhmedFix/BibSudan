@@ -100,6 +100,7 @@
                                     </th>
                                     <th>@lang('books.poster')</th>
                                     <th>@lang('books.title')</th>
+                                    <th>@lang('books.pdf')</th>
                                     <th>@lang('categories.categories')</th>
                                     <th>@lang('authors.authors')</th>
                                     <th>@lang('books.vote')</th>
@@ -152,6 +153,7 @@
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'poster', name: 'poster', searchable: false, sortable: false, width: '10%'},
                 {data: 'title', name: 'title', width: '15%'},
+                {data: 'pdf', name: 'pdf', width: '15%'},
                 {data: 'categories', name: 'categories', searchable: false},
                 {data: 'authors', name: 'authors', searchable: false},
                 {data: 'vote', name: 'vote', searchable: false},

@@ -36,15 +36,24 @@
                     </div>
                     {{--poster--}}
                     <div class="form-group">
-                        <label>@lang('books.poster') <span class="text-danger">*</span></label>
+                        <label>@lang('books.poster')</span></label>
                         <input type="file" name="poster" class="form-control load-image">
                         {{-- <img src="{{ $book->poster_path }}" class="loaded-image" alt="" style="display: block; width: 200px; margin: 10px 0;"> --}}
                     </div>
-
+                   {{--pdf--}}
+                   <div class="form-group">
+                   <label>@lang('books.pdf') <span class="text-danger">*</span></label>
+                   <input type="file" name="pdf" class="form-control load-image" >
+                   </div>
+                   {{--page count--}}
+                    <div class="form-group">
+                    <label>@lang('books.page_count') <span class="text-danger">*</span></label>
+                    <input type="text" name="page_count" autofocus class="form-control" value="{{ old('page_count') }}" required>
+                    </div>
                     {{-- categories --}}
                     <div class="form-group">
-                        <label>@lang('books.categories')</label>
-                        <select name="category_id" class="form-control">
+                        <label>@lang('books.categories')<span class="text-danger">*</span></label>
+                        <select name="category_id" class="form-control" required>
                             <option value="">@lang('books.all_categories')</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" >{{ $category->name }}</option>
@@ -54,8 +63,8 @@
 
                     {{-- authors --}}
                     <div class="form-group">
-                        <label>@lang('books.authors')</label>
-                        <select name="author_id" class="form-control">
+                        <label>@lang('books.authors')<span class="text-danger">*</span></label>
+                        <select name="author_id" class="form-control" required>
                             <option value="">@lang('books.all_authors')</option>
                             @foreach ($authors as $author)
                                 <option value="{{ $author->id }}" >{{ $author->name }}</option>

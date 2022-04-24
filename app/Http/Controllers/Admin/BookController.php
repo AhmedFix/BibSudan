@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Role;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
 class BookController extends Controller
@@ -52,6 +53,12 @@ class BookController extends Controller
             $request->poster->move('uploads/books_images',$name);
             $requestData['poster'] = $name;
 
+        }//end of if
+        if ($request->pdf) {
+            $fileName = $request->pdf->hashName();
+            $request->pdf->move('uploads/books_files',$fileName);
+            $requestData['pdf'] = $fileName;
+
         }//end of if 
         // $requestData = $request->except(['category_id', 'author_id']);
         $requestData['release_date'] = date('Y-m-d H:i:s');
@@ -61,7 +68,7 @@ class BookController extends Controller
 
 
         ///
-       $category =Category::find($request->category_id);
+        $category =Category::find($request->category_id);
         $category->books()->attach($book->id);
         $author =Author::find($request->author_id);
         $author->books()->attach($book->id);
@@ -74,14 +81,36 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $roles = Role::whereNotIn('name', ['super_admin', 'admin'])->get();
-
-        return view('admin.books.edit', compact('book', 'roles'));
+        $categories = Category::all();
+        $authors = Author::all();
+        return view('admin.books.edit', compact('book', 'roles','categories', 'authors'));
 
     }// end of edit
 
     public function update(BookRequest $request, Book $book)
     {
-        $book->update($request->validated());
+        $requestData = $request->validated();
+        if ($request->poster) {
+
+            if ($book->hasPoster()) {
+                Storage::disk('local')->delete('public/uploads/books_images' . $book->poster);
+            }
+
+            $request->poster->store('public/uploads');
+            $requestData['poster'] = $request->poster->hashName();
+
+        }//end of if 
+        if ($request->pdf) {
+            if ($book->hasPoster()) {
+                Storage::disk('local')->delete('public/uploads/books_files' . $book->poster);
+            }
+            $fileName = $request->pdf->hashName();
+            $request->pdf->move('uploads/books_files',$fileName);
+            $requestData['pdf'] = $fileName;
+
+        }//end of if 
+
+        $book->update($requestData);
 
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('admin.books.index');
@@ -101,6 +130,9 @@ class BookController extends Controller
             ->addColumn('record_select', 'admin.books.data_table.record_select')
             ->addColumn('poster', function (Book $book) {
                 return view('admin.books.data_table.poster', compact('book'));
+            })
+            ->addColumn('pdf', function (Book $book) {
+                return view('admin.books.data_table.book_files', compact('book'));
             })
             ->addColumn('categories', function (Book $book) {
                 return view('admin.books.data_table.categories', compact('book'));

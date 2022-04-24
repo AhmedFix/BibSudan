@@ -19,10 +19,12 @@ class BookResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'poster' => $this->poster_path,
+            'pdf' => $this->pdf_path,
             'type' => $this->type,
             'release_date' => $this->release_date,
             'vote' => $this->vote,
             'vote_count' => $this->vote_count,
+            'page_count' => $this->page_count,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];
 

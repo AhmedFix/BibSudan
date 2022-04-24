@@ -7,6 +7,7 @@ return [
     'description' => 'الوصف',
     'vote' => 'التقيم',
     'vote_count' => 'عدد التقيمات',
+    'page_count' => 'عدد الصفحات',
     'release_date' => 'تاريخ الاصدار',
     'type'=> 'النوع',
     'poster' => 'الغلاف',
@@ -23,4 +24,6 @@ return [
     'categories' => 'التصنيفات',
     'all_authors' => 'كل المؤلفين',
     'authors' => 'المؤلفين',
+    'download_pdf' => 'تحميل الكتاب',
+    'pdf' => 'ملف pdf',
 ];

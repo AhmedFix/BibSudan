@@ -26,11 +26,13 @@ class BookRequest extends FormRequest
         $rules = [
             'title' => 'required|unique:books',
             'description' => 'required',
-            'poster' => 'sometimes|nullable',
+            'poster' => 'sometimes|nullable|image',
+            'pdf' => 'sometimes|nullable|required|mimes:pdf',
             'type' => 'required',
             'release_date' => 'required',
             'category_id' => 'required',
-            'author_id' => 'required'
+            'author_id' => 'required',
+            'page_count' => 'required'
             
         ];
 
