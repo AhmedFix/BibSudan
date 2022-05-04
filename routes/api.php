@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
 
-//genre routes
+//category  routes
 Route::get('/categories', 'CategoryController@index');
+
+//author  routes
+Route::get('/authors', 'AuthorController@index');
 
 //book routes
 Route::get('/books/{book}/images', 'BookController@images');
