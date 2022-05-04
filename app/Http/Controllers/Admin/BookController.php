@@ -101,8 +101,8 @@ class BookController extends Controller
 
         }//end of if 
         if ($request->pdf) {
-            if ($book->hasPoster()) {
-                Storage::disk('local')->delete('public/uploads/books_files' . $book->poster);
+            if ($book->hasPdf()) {
+                Storage::disk('local')->delete('public/uploads/books_files' . $book->pdf);
             }
             $fileName = $request->pdf->hashName();
             $request->pdf->move('uploads/books_files',$fileName);
