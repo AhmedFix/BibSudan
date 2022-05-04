@@ -54,12 +54,7 @@ class BookController extends Controller
             $requestData['poster'] = $name;
 
         }//end of if
-        if ($request->pdf) {
-            $fileName = $request->pdf->hashName();
-            $request->pdf->move('uploads/books_files',$fileName);
-            $requestData['pdf'] = $fileName;
-
-        }//end of if 
+        
         // $requestData = $request->except(['category_id', 'author_id']);
         $requestData['release_date'] = date('Y-m-d H:i:s');
         $requestData['vote'] = '0.0';
@@ -98,15 +93,6 @@ class BookController extends Controller
 
             $request->poster->store('public/uploads/books_images');
             $requestData['poster'] = $request->poster->hashName();
-
-        }//end of if 
-        if ($request->pdf) {
-            if ($book->hasPdf()) {
-                Storage::disk('local')->delete('public/uploads/books_files' . $book->pdf);
-            }
-            $fileName = $request->pdf->hashName();
-            $request->pdf->move('uploads/books_files',$fileName);
-            $requestData['pdf'] = $fileName;
 
         }//end of if 
 

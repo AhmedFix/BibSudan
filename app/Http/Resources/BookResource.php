@@ -19,7 +19,7 @@ class BookResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'poster' => $this->poster_path,
-            'pdf' => $this->pdf_path,
+            'pdf_url' => $this->pdf_url,
             'type' => $this->type,
             'release_date' => $this->release_date,
             'vote' => $this->vote,

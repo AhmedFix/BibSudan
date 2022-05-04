@@ -26,5 +26,5 @@ return [
     'all_authors' => 'كل المؤلفين',
     'authors' => 'المؤلفين',
     'download_pdf' => 'تحميل الكتاب',
-    'pdf' => 'ملف pdf',
+    'pdf_url' => 'رابط ملف ال pdf',
 ];

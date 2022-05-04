@@ -41,10 +41,10 @@
                         <input type="file" name="poster" class="form-control load-image" >
                         <img src="{{ $book->poster_path }}" class="loaded-image" alt="" style="display: block; width: 200px; margin: 10px 0;">
                     </div>
-                   {{--pdf--}}
+                   {{--Pdf Url--}}
                    <div class="form-group">
-                   <label>@lang('books.pdf') <span class="text-danger">*</span></label>
-                   <input type="file" name="pdf" class="form-control load-image" >
+                    <label>@lang('books.pdf_url') <span class="text-danger">*</span></label>
+                    <input type="text" name="pdf_url" autofocus class="form-control" value="{{ old('pdf_url') }}" required>
                    </div>
                    {{--page count--}}
                     <div class="form-group">

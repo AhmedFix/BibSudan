@@ -27,7 +27,7 @@ class BookRequest extends FormRequest
             'title' => 'required|unique:books',
             'description' => 'required',
             'poster' => 'sometimes|nullable|image',
-            'pdf' => 'sometimes|nullable|required|mimes:pdf',
+            'pdf_url' => 'required',
             'type' => 'required',
             'release_date' => 'required',
             'category_id' => 'required',

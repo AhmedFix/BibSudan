@@ -10,11 +10,11 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'title', 'description', 'poster', 'pdf', 'release_date', 'vote',
+    protected $fillable = [ 'title', 'description', 'poster', 'pdf_url', 'release_date', 'vote',
         'vote_count','page_count', 'type'
     ];
 
-    protected $appends = ['poster_path','pdf_path',];
+    protected $appends = ['poster_path'];
 
     // protected $casts = [
     //     'release_date' => 'date',
@@ -32,12 +32,6 @@ class Book extends Model
         
     }// end of getPosterPathAttribute
 
-    public function getPdfPathAttribute()
-    {
-            return asset('uploads/books_files/' . $this->pdf);
-       
-        
-    }// end of getPdfPathAttribute
 
     //scope
 
@@ -126,10 +120,5 @@ class Book extends Model
 
     }// end of hasPoster
 
-    public function hasPdf()
-    {
-        return $this->pdf != null;
-
-    }// end of haspdf
 
 }//end of model
