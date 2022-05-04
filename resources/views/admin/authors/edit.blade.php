@@ -18,7 +18,7 @@
 
             <div class="tile shadow">
 
-                <form method="post" action="{{ route('admin.authors.update', $actor->id) }}">
+                <form method="post" action="{{ route('admin.authors.update', $author->id) }}">
                     @csrf
                     @method('put')
 
@@ -27,48 +27,14 @@
                     {{--name--}}
                     <div class="form-group">
                         <label>@lang('authors.name') <span class="text-danger">*</span></label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $actor->name) }}" required>
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $author->name) }}" required>
                     </div>
-
-                    <h5>@lang('authors.permissions') <span class="text-danger">*</span></h5>
-
-                    @php
-                        $models = ['authors', 'admins'];
-                    @endphp
-
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>@lang('authors.model')</th>
-                            <th>@lang('authors.permissions')</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        @foreach ($models as $model)
-                            <tr>
-                                <td>@lang($model . '.' . $model)</td>
-                                <td>
-
-                                    @php
-                                        $permissionMaps = ['create', 'read', 'update', 'delete'];
-                                    @endphp
-
-                                    @foreach ($permissionMaps as $permissionMap)
-                                        <div class="animated-checkbox mx-2" style="display:inline-block;">
-                                            <label class="m-0">
-                                                <input type="checkbox" value="{{ $permissionMap . '_' . $model }}" name="permissions[]" {{ $actor->hasPermission( $permissionMap . '_' . $model) ? 'checked' : '' }} class="actor">
-                                                <span class="label-text">@lang('site.' . $permissionMap)</span>
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </td>
-                            </tr>
-                        @endforeach
-
-                        </tbody>
-                    </table><!-- end of table -->
-
+                    {{--image--}}
+                    <div class="form-group">
+                        <label>@lang('authors.image')</span></label>
+                        <input type="file" name="image" class="form-control load-image" >
+                        <img src="{{ $author->image_path }}" class="loaded-image" alt="" style="display: block; width: 200px; margin: 10px 0;">
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('site.update')</button>
                     </div>

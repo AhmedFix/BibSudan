@@ -34,6 +34,12 @@ class Author extends Model
     }// end of books
     
     //fun
+    public function hasImage()
+    {
+        return $this->image != null;
+
+    }// end of hasImage
+    
     public function images()
     {
         return $this->hasMany(Image::class);

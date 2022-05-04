@@ -96,7 +96,7 @@ class BookController extends Controller
                 Storage::disk('local')->delete('public/uploads/books_images' . $book->poster);
             }
 
-            $request->poster->store('public/uploads');
+            $request->poster->store('public/uploads/books_images');
             $requestData['poster'] = $request->poster->hashName();
 
         }//end of if 

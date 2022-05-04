@@ -33,9 +33,9 @@
                         <p style="font-size: 16px;">{{ $book->description }}</p>
 
                         <div class="d-flex mb-2">
-                            <i class="fa fa-star text-warning" style="font-size: 35px;"></i>
+                            <i class="fa fa-star text-warning" style="font-size: 24px;"></i>
                             <h3 class="m-0 mx-2">{{ $book->vote }}</h3>
-                            <p class="m-0 align-self-center">@lang('books.by') {{ $book->vote_count }}</p>
+                            <p class="m-0 align-self-center">@lang('books.vot_by') {{ $book->vote_count }}</p>
                         </div>
 
                         <p><span class="font-weight-bold">@lang('books.language')</span>: en</p>
@@ -62,8 +62,11 @@
 
                                 <div class="col-md-2 my-2">
                                     <a href="{{ route('admin.books.index', ['author_id' => $author->id]) }}">
-                                        <img src="{{ $author->image_path }}" class="img-fluid" alt="">
+                                        <img src="{{ $author->image_path }}" class="app-sidebar__user-avatar" alt="">
                                     </a>
+                                    <a href="{{ route('admin.books.index', ['author_id' => $author->id]) }}">
+                                        <label>@lang('authors.author') : {{ $author->name }}</label>
+                                    </a>    
                                 </div><!-- end of col -->
 
                             @endforeach

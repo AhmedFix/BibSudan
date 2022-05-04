@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AuthorRequest;
 use App\Models\Author;
 use App\Models\Role;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
 class AuthorController extends Controller
@@ -78,8 +79,18 @@ class AuthorController extends Controller
 
     public function update(AuthorRequest $request, Author $author)
     {
-        $author->update($request->validated());
+        $requestData = $request->validated();
+        if ($request->image) {
 
+            if ($author->hasimage()) {
+                Storage::disk('local')->delete('public/uploads/authors_images' . $author->image);
+            }
+
+            $request->image->store('public/uploads/authors_images');
+            $requestData['image'] = $request->image->hashName();
+
+        }//end of if 
+        $author->update($requestData);
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('admin.authors.index');
 

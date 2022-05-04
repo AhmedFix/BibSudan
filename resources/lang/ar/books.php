@@ -14,6 +14,7 @@ return [
     'novels' => 'روايات',
     'stories' => 'قصص',
     'by' => 'بواسطة',
+    'vot_by' => 'تم التقييم بواسطة',
     'language' => 'اللغة',
     'books_chart' => 'مخطط الكتب',
     'total_books' => 'مجموع الكتب',

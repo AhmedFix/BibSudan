@@ -32,8 +32,9 @@
                     {{--description--}}
                     <div class="form-group">
                         <label>@lang('books.description') <span class="text-danger">*</span></label>
-                        <textarea name="description" class="form-control ckeditor" required>{{ $book->description }}</textarea>
+                        <textarea name="description" class="form-control" required>{{ $book->description }}</textarea>
                     </div>
+                    
                     {{--poster--}}
                     <div class="form-group">
                         <label>@lang('books.poster')</span></label>
